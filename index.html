@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tirage au Sort Anonyme</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎲 Tirage au Sort Anonyme</h1>
+            <p class="subtitle" id="subtitle">Entrez les participants et lancez le tirage au sort</p>
+            <div id="adminBadge" class="admin-badge hidden">
+                <span>👑 Mode Admin</span>
+            </div>
+            <div id="participantBadge" class="participant-badge hidden">
+                <span>👁️ Mode Participant (Lecture seule)</span>
+            </div>
+        </header>
+
+        <!-- Panneau de connexion admin -->
+        <div id="adminLoginPanel" class="admin-panel hidden">
+            <h2>Connexion Admin</h2>
+            <p>Entrez le mot de passe admin pour gérer le tirage au sort</p>
+            <input type="password" id="adminPassword" placeholder="Mot de passe admin" class="admin-input">
+            <button id="loginBtn" class="btn btn-primary">Se connecter</button>
+        </div>
+
+        <!-- Panneau admin (lien de partage) -->
+        <div id="adminPanel" class="admin-panel hidden">
+            <h2>👑 Panneau Admin</h2>
+            <div class="share-section">
+                <label>Lien de partage (lecture seule) :</label>
+                <div class="share-link-group">
+                    <input type="text" id="shareLink" readonly class="share-link-input">
+                    <button id="copyLinkBtn" class="btn btn-secondary">📋 Copier</button>
+                </div>
+                <p class="share-info">Partagez ce lien avec les participants. Ils pourront voir et lancer le tirage mais ne pourront pas modifier les participants.</p>
+            </div>
+            <button id="logoutBtn" class="btn btn-secondary">Se déconnecter</button>
+        </div>
+
+        <main>
+            <div class="input-section" id="inputSection">
+                <div class="number-selector" id="numberSelector">
+                    <label for="participantCount">Nombre de participants :</label>
+                    <div class="number-input-group">
+                        <input 
+                            type="number" 
+                            id="participantCount" 
+                            min="2" 
+                            max="50" 
+                            value="5"
+                            class="number-input"
+                            disabled
+                        >
+                        <button id="generateBtn" class="btn btn-secondary" disabled>Générer les champs</button>
+                    </div>
+                </div>
+                
+                <div id="participantsContainer" class="participants-container">
+                    <!-- Les champs de participants seront générés ici -->
+                </div>
+                
+                <div class="button-group">
+                    <button id="drawBtn" class="btn btn-primary">🎯 Tirer au sort</button>
+                    <button id="clearBtn" class="btn btn-secondary" disabled>Effacer</button>
+                </div>
+            </div>
+
+            <div id="resultSection" class="result-section hidden">
+                <div class="result-card">
+                    <h2>🏆 Gagnant(e) :</h2>
+                    <div id="winner" class="winner"></div>
+                </div>
+            </div>
+
+            <div id="errorSection" class="error-section hidden">
+                <p id="errorMessage"></p>
+            </div>
+        </main>
+
+        <footer>
+            <p>Application de tirage au sort anonyme - Simple et efficace</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
